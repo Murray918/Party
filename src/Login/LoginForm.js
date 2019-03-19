@@ -19,35 +19,42 @@ export default class LoginForm extends Component {
 
   render() {
     return (
-      <div className='shadow '>
-        <form  onSubmit={this.handleSubmit}>
-          <div className='form-wrapper'>
-            <div>
-                <input
-                  type='text'
-                  name='username'
-                  placeholder='Username'
-                  value={this.state.username}
-                  onChange={this.handleChange}
-                />
-            </div>
-            <div>
-                <input
-                  type='password'
-                  placeholder='Password'
-                  name='password'
-                  value={this.state.password}
-                  onChange={this.handleChange}
-                />
-
-            </div>
-            <div>
-              <label htmlFor='exampleEmailInput'>&nbsp; </label>
-              <input className='button-primary' type='submit' value='Login' />
-            </div>
+      <AuthConsumer>
+        {(login, logout) => (
+          <div className='shadow '>
+            <form onSubmit={this.handleSubmit}>
+              <div className='form-wrapper'>
+                <div>
+                  <input
+                    type='text'
+                    name='username'
+                    placeholder='Username'
+                    value={this.state.username}
+                    onChange={this.handleChange}
+                  />
+                </div>
+                <div>
+                  <input
+                    type='password'
+                    placeholder='Password'
+                    name='password'
+                    value={this.state.password}
+                    onChange={this.handleChange}
+                  />
+                </div>
+                <div>
+                  <label htmlFor='exampleEmailInput'>&nbsp; </label>
+                  <input
+                    className='button-primary'
+                    type='submit'
+                    value='Login'
+                  />
+                </div>
+              </div>
+            </form>
           </div>
-        </form>
-      </div>
+        )}
+      </AuthConsumer>
     )
   }
 }
