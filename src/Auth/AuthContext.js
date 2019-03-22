@@ -12,11 +12,13 @@ class AuthProvider extends Component {
     })
   }
 
-  logOut = () => {
+  logout = () => {
+    console.log('please work')
     this.setState({
       isAuth: false
     })
   }
+  
   render() {
     return (
       <Provider

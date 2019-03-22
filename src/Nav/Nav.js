@@ -1,13 +1,13 @@
 import React, { Component } from "react"
-import { NavLink, Link  } from "react-router-dom"
-import { AuthConsumer } from '../Auth/AuthContext'
+import { NavLink, Link } from "react-router-dom"
+import { AuthConsumer } from "../Auth/AuthContext"
 
 export default class Nav extends Component {
   render() {
     return (
       <div className='nav'>
         <AuthConsumer>
-          {({ isAuth }) => (
+          {({isAuth, logout}) => (
             <div>
               <h4>
                 <Link to='/'>Home</Link>
@@ -15,7 +15,9 @@ export default class Nav extends Component {
               {!isAuth ? (
                 <NavLink to='/login'>Login</NavLink>
               ) : (
-                <NavLink to='/logout'>Logout</NavLink>
+                <p onClick={logout}>
+                  Logout
+                </p>
               )}
             </div>
           )}

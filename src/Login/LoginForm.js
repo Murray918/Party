@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import { AuthConsumer } from "../Auth/AuthContext"
 
 export default class LoginForm extends Component {
   state = {
@@ -12,17 +13,18 @@ export default class LoginForm extends Component {
     })
   }
 
-  handleSubmit = (event) => {
+  handleSubmit = (fn, event) => {
     event.preventDefault()
     console.log("it has been submited")
+    fn()
   }
 
   render() {
     return (
       <AuthConsumer>
-        {(login, logout) => (
+        {({ login }) => (
           <div className='shadow '>
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit=   {(event) => this.handleSubmit(login, event)}>
               <div className='form-wrapper'>
                 <div>
                   <input
